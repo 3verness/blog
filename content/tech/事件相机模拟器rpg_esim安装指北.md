@@ -1,5 +1,6 @@
 ---
 title: "事件相机模拟器rpg_esim安装指北"
+slug: "rpg_esim-simulator"
 subtitle: ""
 description: ""
 tags:

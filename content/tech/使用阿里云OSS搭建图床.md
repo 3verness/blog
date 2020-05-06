@@ -1,5 +1,6 @@
 ---
 title: "使用阿里云OSS搭建图床"
+slug: "image-hosting-with-aliyun-oss"
 subtitle: ""
 defcription: ""
 tags:

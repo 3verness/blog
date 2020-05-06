@@ -1,5 +1,6 @@
 ---
 title: "使用Python绘制电路图"
+slug: "circuit-diagram-with-python"
 subtitle: ""
 defcription: ""
 tags:

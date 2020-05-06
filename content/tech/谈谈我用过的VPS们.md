@@ -1,5 +1,6 @@
 ---
 title: "谈谈我用过的VPS们"
+slug: "talk-about-vps"
 subtitle: ""
 defcription: ""
 tags:
