@@ -6,6 +6,7 @@ defcription: ""
 tags:
     - "python"
     - "tool"
+    - "tutorial"
 date: 2020-04-20T21:32:44+08:00
 draft: false
 author: EvernessW

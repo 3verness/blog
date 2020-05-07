@@ -7,6 +7,7 @@ tags:
     - "aliyun"
     - "oss"
     - "PicGo"
+    - "tutorial"
 date: 2020-04-14T11:54:07+08:00
 draft: false
 author: EvernessW
