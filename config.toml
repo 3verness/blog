@@ -318,7 +318,7 @@ uglyURLs = false
 
     ## 「诗意人生」
     # 诗句，支持 Markdown
-    homePoetry = ["Once there was an explosion.", "A bang which gave rise to life as we know it.", "And then came the final explosion…", "An explosion that'll be our last."]
+    homePoetry = ["Never forget your past.", "Don't worry too much about your present.", "And live life like there's no tomorrow."]
     # 底部链接的内间距，单位：em
     homeLinksPadding = 1
 
