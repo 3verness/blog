@@ -1298,6 +1298,6 @@ uglyURLs = false
 
     # 说明：需要开启 `SearchIndex` 的输出
 
-    enableLunrSearch = true
+    enableLunrSearch = false
     # 说明：https://lunrjs.com/
 
