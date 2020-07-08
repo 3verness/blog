@@ -36,4 +36,4 @@ draft: false
 
 ## Thanks
 
-博客自豪地由[Hugo](https://gohugo.io/)驱动，主题是[MemE](https://github.com/reuixiy/hugo-theme-meme)，使用[Git Hook](https://git.everness.me/Everness/blog)持续部署，由[Service Worker](https://developers.google.com/web/fundamentals/primers/service-workers/)提供PWA支持。
+博客自豪地由 [Hugo](https://gohugo.io/) 驱动，主题是 [MemE](https://github.com/reuixiy/hugo-theme-meme) ，使用 [Git Hook](https://git.everness.me/Everness/blog) 持续部署，由 [Service Worker](https://developers.google.com/web/fundamentals/primers/service-workers/) 提供PWA支持。
