@@ -19,8 +19,8 @@ mermaid: false
 两个月前，Caddy更新了v2版本，相比v1版本，其主要特点是：
 
 * localhost也能自动获取HTTPS
-* 支持HTTP/3~~（还没有一个浏览器的稳定版支持~~
-* 支持Zstandard压缩算法~~（同样还没有一个浏览器的稳定版支持~~
+* 支持HTTP/3（~~还没有一个浏览器的稳定版支持~~
+* 支持Zstandard压缩算法（~~同样还没有一个浏览器的稳定版支持~~
 * 更复杂的Caddyfile配置
 
 ![](https://awesome-image.oss-cn-beijing.aliyuncs.com/20200710095257.png)
