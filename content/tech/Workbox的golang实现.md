@@ -7,7 +7,7 @@ tags:
     - "golang"
     - "blog"
 date: 2020-07-10T13:17:20+08:00
-draft: true
+draft: false
 author: EvernessW
 
 
@@ -78,6 +78,6 @@ workbox.precaching.precacheAndRoute([{{- range $index, $element := . -}}
 
 随后编写Golang脚本，遍历根目录下的所有文件，并计算其MD5值，最后应用模板生成文件。完整代码见[Gitea](https://git.everness.me/Everness/workbox)。
 
-## 最终效果
+## 效果
 
-速度比`workbox-cli`要快得多，更主要的是不需要解决依赖问题，单可执行文件即可运行。
+速度比`workbox-cli`要快得多，从提交到生成完毕只需要2秒，更主要的是不需要解决依赖问题，单可执行文件即可运行。
