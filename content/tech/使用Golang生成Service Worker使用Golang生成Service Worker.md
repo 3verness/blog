@@ -1,5 +1,5 @@
 ---
-title: "Workbox的golang实现"
+title: "使用Golang生成Service Worker"
 slug: "workbox-in-golang"
 subtitle: ""
 defcription: ""
