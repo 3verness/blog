@@ -66,27 +66,18 @@ workbox.googleAnalytics.initialize();
 
 明白了`sw.js`的结构，我们需要做的就是遍历public中的文件，生成List并写入`sw.js`中，在Golang中可以使用标准库中的text/template进行代码实现。
 
-首先创建一个模板文件：
+首先创建一个模板文件，这里仅关注模板部分，完整文件可参照[`sw-template.js`](https://git.everness.me/Everness/blog/src/branch/master/sw-template.js)：
 
 ```js
-importScripts(`https://storage.googleapis.com/workbox-cdn/releases/{{.Version}}/workbox-sw.js`);
-
-workbox.core.setCacheNameDetails({
-    prefix: "Evergarden"
-});
-
-workbox.core.skipWaiting();
-
-workbox.core.clientsClaim();
-
-workbox.precaching.precacheAndRoute({{- range $index, $element := . -}}
+workbox.precaching.precacheAndRoute([{{- range $index, $element := . -}}
 {{- if ne $index 0 -}},
 {{- end -}}
 {revision:"{{$element.Revision}}",url:"./{{$element.Url}}"}
-{{- end -}});
-
-workbox.precaching.cleanupOutdatedCaches();
-
-workbox.googleAnalytics.initialize();
+{{- end -}}]);
 ```
 
+随后编写Golang脚本，遍历根目录下的所有文件，并计算其MD5值，最后应用模板生成文件。完整代码见[Gitea](https://git.everness.me/Everness/workbox)。
+
+## 最终效果
+
+速度比`workbox-cli`要快得多，更主要的是不需要解决依赖问题，单可执行文件即可运行。
