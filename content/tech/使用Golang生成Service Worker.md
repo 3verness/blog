@@ -80,4 +80,6 @@ workbox.precaching.precacheAndRoute([{{- range $index, $element := . -}}
 
 ## 效果
 
-速度比`workbox-cli`要快得多，从提交到生成完毕只需要2秒，更主要的是不需要解决依赖问题，单可执行文件即可运行。
+速度比`workbox-cli`要快得多，从提交到生成完毕只需要2秒左右，更主要的是不需要解决依赖问题，单可执行文件即可运行。
+
+![](https://awesome-image.oss-cn-beijing.aliyuncs.com/20200710172017.png)
