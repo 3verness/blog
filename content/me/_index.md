@@ -6,6 +6,52 @@ draft: false
 
 欢迎来到Evergarden！这是一个佛系大学生的一亩三分地，在这里撒泼打滚，思考人生。
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+
+<div id="player">
+    <pre class="aplayer-lrc-content">
+        [00:19.220]On bended knee is no way to be free
+        [00:23.940]Lifting up an empty cup, I ask silently
+        [00:29.110]All my destinations will accept the one that's me
+        [00:33.460]So I can breathe...
+        [00:38.900]Circles they grow and they swallow people whole
+        [00:43.820]Half their lives they say goodnight to wives they'll never know
+        [00:48.460]A mind full of questions, and a teacher in my soul
+        [00:52.960]And so it goes...
+        [00:58.230]Don't come closer or I'll have to go
+        [01:02.890]Holding me like gravity are places that pull
+        [01:07.610]If ever there was someone to keep me at home
+        [01:11.770]It would be you...
+        [01:17.450]Everyone I come across, in cages they bought
+        [01:22.200]They think of me and my wandering, but I'm never what they thought
+        [01:27.160]I've got my indignation, but I'm pure in all my thoughts
+        [01:31.300]I'm alive...
+        [01:37.180]Wind in my hair, I feel part of everywhere
+        [01:42.190]Underneath my being is a road that disappeared
+        [01:46.860]Late at night I hear the trees, they're singing with the dead
+        [01:51.290]Overhead...
+        [01:56.840]Leave it to me as I find a way to be
+        [02:01.390]Consider me a satellite, forever orbiting
+        [02:06.070]I knew all the rules, but the rules did not know me
+        [02:10.730]Guaranteed
+    </pre>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+
+<script type="text/javascript">
+const ap = new APlayer({
+    container: document.getElementById('player'),
+    lrcType: 2,
+    audio: [{
+        name: 'Guaranteed',
+        artist: 'Eddie Vedder',
+        url: 'http://music.163.com/song/media/outer/url?id=1304038.mp3',
+        cover: 'http://p1.music.126.net/E5q7w2l7xiZijFAJmmiEKw==/18159534045169320.jpg?param=130y130',
+    }],
+});
+</script>
+
 ## Why Blog？
 
 **Recording** first, then **sharing**. 
