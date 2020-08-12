@@ -16,6 +16,10 @@ katex: false
 mermaid: false
 ---
 
+{{< note info >}}
+当前`hugo-theme-meme`已经原生支持`sw.js`，此文章已过期。
+{{< /note >}}
+
 当你打开我的博客时，你可能会发现，你可以将博客安装为PWA应用已提供离线访问。
 
 ![](https://awesome-image.oss-cn-beijing.aliyuncs.com/20200710132023.png)
