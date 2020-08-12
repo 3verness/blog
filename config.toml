@@ -9,7 +9,7 @@ hasCJKLanguage = true
 copyright = "[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)"
 
 # 主题选择
-theme = "meme"
+theme = ["shortcodes", "meme"]
 
 # `hugo new` 新建文章自动打开的文本编辑器
 newContentEditor = ""
@@ -139,11 +139,8 @@ uglyURLs = false
     page = ["HTML"]
     home = ["HTML", "SectionsAtom", "SectionsRSS"]
     section = ["HTML"]
-    # 类别
-    taxonomyTerm = ["HTML"]
-    # 类别项
     taxonomy = ["HTML"]
-    # 说明：https://github.com/gohugoio/hugo/issues/4528#issuecomment-508488859
+    term = ["HTML"]
 
 # RSS & Atom 文章数限制
 [services.rss]
@@ -582,6 +579,9 @@ uglyURLs = false
     enableMermaid = false
     # 说明：文章的 Front Matter 中的 `mermaid`
     #      的优先级高于此处
+
+    mermaidTheme = 'default'
+    mermaidThemeDark = 'dark'
 
 
     ######################################
@@ -1206,6 +1206,7 @@ uglyURLs = false
     #      文本或图标，留空（""）则无
     #      https://busuanzi.ibruce.info/
 
+    enableSocials = false
 
     ######################################
     # 多语言
