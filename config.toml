@@ -94,7 +94,7 @@ uglyURLs = false
     # 名字
     name = "EvernessW"
     # 邮箱
-    email = "wangshaohang.0416.china@gmail.com"
+    email = "3verness@gmail.com"
     # 座右铭或简介
     motto = "To discover. To change."
     # 头像
@@ -133,6 +133,18 @@ uglyURLs = false
 [outputFormats.SectionsRSS]
     mediaType = "application/rss+xml"
     baseName = "rss"
+
+# lunr.js 的搜索索引
+[outputFormats.SearchIndex]
+    mediaType = "application/json"
+    baseName = "search"
+
+# Algolia 的搜索索引
+[outputFormats.Algolia]
+    mediaType = "application/json"
+    baseName = "algolia"
+    isPlainText = true
+    notAlternative = true
 
 # Hugo 的输出控制
 [outputs]
@@ -198,10 +210,6 @@ uglyURLs = false
     [[menu.main]]
         weight = 5
         identifier = "theme-switcher"
-    [[menu.main]]
-        weight = 6
-        identifier = "lang-switcher"
-
 
     [[menu.home]]
         url = "/life/"
@@ -240,6 +248,10 @@ uglyURLs = false
     # 是否开启
     enableHeader = true
 
+    # 是否自动隐藏
+    enableHeaderAutoHide = true
+    # 说明：仅对弹性布局的顶栏有效
+
     # 是否在首页显示
     displayHeaderInHome = true
     # 说明：对弹性布局的顶栏无效
@@ -251,14 +263,6 @@ uglyURLs = false
     # 顶栏布局
     headerLayout = "flex"
     # 说明：居中布局（center）或弹性布局（flex）
-
-    # 顶栏宽度的回退值
-    headerFallbackWidth = "36em"
-    # 说明：默认情况，MemE 使用 main-inner 元素
-    #      的宽度作为顶栏宽度，但是在一些页面（比
-    #      如「诗意人生」和「视频片段」布局的首页），
-    #      不存在 main-inner 元素，所以你需要为
-    #      这种情况给一个回退值。
 
     # 在窄视图下隐藏菜单栏并显示一个按钮？
     enableNavToggle = true
@@ -393,6 +397,8 @@ uglyURLs = false
     # 是否显示每一分类下的文章数
     displayPostsCount = true
 
+    # 设置一个非负数来限制每一分类下展示的文章数
+    limitPostsLimit = -1
 
     ######################################
     # 标签页面
@@ -449,6 +455,9 @@ uglyURLs = false
 
     # 是否显示每一类别项下的文章数
     displayTaxonomyTermCount = true
+
+    # 设置一个非负数来限制每一类别项下展示的文章数
+    limitEntriesLimit = -1
 
 
     ######################################
@@ -594,6 +603,9 @@ uglyURLs = false
     # 说明：文章的 Front Matter 中的 `comments`
     #      的优先级高于此处
 
+    # 直接加载评论，不需要手动点击按钮加载
+    autoLoadComments = false
+
     ## Disqus
     enableDisqus = false
     disqusShortname = ""
@@ -603,8 +615,6 @@ uglyURLs = false
     valineAppId = ""
     valineAppKey = ""
     valinePlaceholder = "Just go go"
-    valineNotify = false
-    valineVerify = false
     valinePath = ""
     valineAvatar = "mm"
     valineMeta = ["nick", "mail", "link"]
@@ -612,9 +622,13 @@ uglyURLs = false
     valineLang = "zh-cn"
     valineVisitor = false
     valineHighlight = true
-    avatarForce = false
+    valineAvatarForce = false
     valineRecordIP = false
     valineServerURLs = ""
+    valineEmojiCDN = ""
+    valineEmojiMaps = {}
+    valineEnableQQ = false
+    valineRequiredFields = []
     # 说明：https://valine.js.org/
 
     ## Utterances
@@ -625,6 +639,23 @@ uglyURLs = false
     utterancesThemeDark = "photon-dark"
     utterancesLabel = ""
     # 说明：https://utteranc.es/
+
+    ## Gitalk
+    enableGitalk = false
+    gitalkClientID = "your_client_id"
+    gitalkClientSecret = "your_client_secret"
+    gitalkRepo = "your_repository"
+    gitalkOwner = "your_gitalk_owner"
+    gitalkAdmin = ["your_gitalk_admin"]
+    gitalkLable = ["Gitalk"]
+    gitalkDistractionFreeMode = false
+    gitalkPerPage = 10
+    gitalkLanguage = "en"
+    gitalkPagerDirection = "last"
+    gitalkCreateIssueManually = false
+    gitalkProxy = "https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"
+    gitalkEnableHotKey = true
+    # 说明：https://github.com/gitalk/gitalk
 
 
     ######################################
@@ -1037,7 +1068,7 @@ uglyURLs = false
     #      的优先级高于此处
 
     # 仓库地址
-    repoURL = "https://git.everness.me/Everness/blog"
+    repoURL = "https://github.com/3verness/blog"
     # 编辑地址
     repoEditURL = ""
 
@@ -1082,8 +1113,8 @@ uglyURLs = false
     shareOnTwitter = true
     shareOnFacebook = false
     shareOnLinkedIn = false
-    shareOnTelegram = false
-    shareOnWeibo = true
+    shareOnTelegram = true
+    shareOnWeibo = false
     shareOnDouban = false
     shareOnQQ = true
     shareOnQzone = false
@@ -1161,6 +1192,9 @@ uglyURLs = false
 
     # 是否在首页显示
     displayBackToTopInHome = false
+
+    # 是否在移动端显示
+    displayBackToTopOnMobile = false
 
     # 按钮图标
     backToTopIcon = "arrow-up"
@@ -1248,6 +1282,16 @@ uglyURLs = false
     enableFingerprint = true
     # 说明：仅对 MemE 生成的 CSS 和 JS 有效
 
+    # 是否开启子资源完整性验证
+    enableSRI = false
+    # 说明：开启子资源完整性验证后，该策略将使
+    #      MemE 的 CSS 和 JS 在像谷歌翻译这样
+    #      的第三方网站上被禁止。为了避免开启后
+    #      的这个问题，你的服务器必须向 CSS 和
+    #      JS 的请求中加上以下 Header：
+    #
+    #      Access-Control-Allow-Origin: *
+
 
     ######################################
     # HTTPS 强制跳转
@@ -1284,6 +1328,30 @@ uglyURLs = false
 
 
     ######################################
+    # Lunr 搜索（暂不支持中文）
+
+    # 说明：需要开启 `SearchIndex` 的输出
+
+    enableLunrSearch = false
+    # 说明：https://lunrjs.com/
+
+
+    ######################################
+    # Algolia search
+
+    # 说明：需要开启 `Algolia` 的输出，且需要每
+    #      次将生成的 algolia.json 文件上传到
+    #      Algolia
+
+    enableAlgoliaSearch = false
+
+    algoliaAppId = ""
+    algoliaApiKey = ""
+    algoliaIndexName = ""
+    # 说明：https://www.algolia.com/
+
+
+    ######################################
     # 404 页面
 
     # 视频封面
@@ -1293,12 +1361,3 @@ uglyURLs = false
     fofVideoWebm = ""
     fofVideoMp4 = ""
     # 说明：视频地址可留空（""）
-
-    ######################################
-    # Lunr 搜索（暂不支持中文）
-
-    # 说明：需要开启 `SearchIndex` 的输出
-
-    enableLunrSearch = false
-    # 说明：https://lunrjs.com/
-
