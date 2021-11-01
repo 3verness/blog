@@ -1,7 +1,7 @@
 ##########################################
 # 站点配置
 
-baseURL = "https://everness.me/"
+baseURL = "https://www.everness.me/"
 title = "Evergarden"
 languageCode = "zh-CN"
 hasCJKLanguage = true
@@ -100,7 +100,7 @@ uglyURLs = false
     # 头像
     avatar = "/icons/apple-touch-icon.png"
     # 网站（默认值：baseURL）
-    website = "https://everness.me/"
+    website = "https://www.everness.me/"
     # 推特
     twitter = "ShaohangWang"
 
