@@ -29,6 +29,6 @@ jobs:
         if: github.ref == 'refs/heads/main'
         with:
           deploy_key: ${{ secrets.DEPLOY_KEY }}
-          external_repository: 3verness/everness.me
+          external_repository: 3verness/oi-io.me
           publish_branch: main
-          cname: everness.me
+          cname: oi-io.me
