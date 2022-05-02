@@ -49,7 +49,7 @@ Syncthing完美实现了SyncToy的同步功能，同时做出了以下改进：
 
 Scan意味着扫描同步文件夹中的全部内容，计算SHA256值与另一设备比较，当出现不同时触发同步传输。这一计算过程消耗大量资源，因此无法实时进行，往往在启动时运行或作为定时任务周期进行。
 
-实时的差异检测通过Watch实现，这一功能在不同操作系统下有着[不同的实现形式](https://github.com/fsnotify/fsnotify)，在大部分文件系统下Watcher可以通过监听文件系统事件完成，例如Linux下的[inotify](https://man7.org/linux/man-pages/man7/inotify.7.html)和Windows下的[ReadDirectoryChangesW](https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-readdirectorychangesw)，Watcher的资源消耗远远小于扫描，可以做到数秒周期的运行，保障了同步的实时性。通过监听事件实现的Watcher仅当进程运行时有效，若文件在Watcher未运行时发生更改将无法被检测，因此在启动时需要Scan的配合。
+实时的差异检测通过Watch实现，这一功能在不同操作系统下有着[不同的实现形式](https://github.com/fsnotify/fsnotify)，在大部分文件系统下Watcher可以通过监听文件系统事件完成，例如[Linux](https://man7.org/linux/man-pages/man7/inotify.7.html)下的`inotify`和[Windows](https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-readdirectorychangesw)下的`ReadDirectoryChangesW`，Watcher的资源消耗远远小于扫描，可以做到数秒周期的运行，保障了同步的实时性。通过监听事件实现的Watcher仅当进程运行时有效，若文件在Watcher未运行时发生更改将无法被检测，因此在启动时需要Scan的配合。
 
 ## 传输机制
 
