@@ -53,20 +53,26 @@ Hugo中的Shortcodes主要有两种形式，一种为One Tag式，如：
 
 {{<note warning>}}
 
-该Shortcodes包仅支持MemE主题。
+该Shortcodes包仅支持[MemE](https://github.com/reuixiy/hugo-theme-meme)主题。
 
 {{</note>}}
 
 * 将短代码仓库添加至`theme`文件夹
 
   ```bash
-  git clone https://git.everness.me/Everness/shortcodes.git themes/shortcodes
+  git clone https://github.com/3verness/shortcodes.git themes/shortcodes
   ```
 
 * 将`config.toml`中的主题一行改为
 
   ```toml
   theme = ["shortcodes", "meme"]
+  ```
+
+* 在`assets/scss/custom/_custom.scss`文件中添加：
+
+  ```scss
+  @import "shortcodes/shortcodes"
   ```
 
 * 开始使用
@@ -148,9 +154,9 @@ Hugo中的Shortcodes主要有两种形式，一种为One Tag式，如：
 #### 友链
 
 ```html
-{{</* friend name="Everness" url="https://everness.me" logo="https://everness.me/favicon.ico" motto="To discover. To change." */>}}
+{{</* friend name="3verness" url="https://oi-io.me" logo="https://oi-io.me/favicon.ico" motto="To discover. To change." */>}}
 ```
 
 
 
-{{< friend name="Everness" url="https://everness.me" logo="https://everness.me/favicon.ico" motto="To discover. To change." >}}
+{{< friend name="3verness" url="https://oi-io.me" logo="https://oi-io.me/favicon.ico" motto="To discover. To change." >}}
