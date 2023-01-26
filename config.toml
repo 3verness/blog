@@ -1,7 +1,7 @@
 ##########################################
 # 站点配置
 
-baseURL = "https://oi-io.me/"
+baseURL = "https://ioyoi.me/"
 title = "Evergarden"
 languageCode = "zh-CN"
 hasCJKLanguage = true
@@ -100,7 +100,7 @@ uglyURLs = false
     # 头像
     avatar = "/icons/apple-touch-icon.png"
     # 网站（默认值：baseURL）
-    website = "https://oi-io.me/"
+    website = "https://ioyoi.me/"
     # 推特
     twitter = "ShaohangWang"
 
@@ -904,6 +904,10 @@ uglyURLs = false
 
 
     ######################################
+    # 滚动条
+    customizeScrollbar = true
+
+    ######################################
     # 字体排版
 
     ######################################
@@ -1114,9 +1118,9 @@ uglyURLs = false
     shareOnFacebook = false
     shareOnLinkedIn = false
     shareOnTelegram = true
-    shareOnWeibo = false
+    shareOnWeibo = true
     shareOnDouban = false
-    shareOnQQ = true
+    shareOnQQ = false
     shareOnQzone = false
 
     shareViaQRCode = true
@@ -1226,10 +1230,10 @@ uglyURLs = false
     displayPoweredBy = true
 
     # 是否显示站点的版权信息
-    displaySiteCopyright = true
+    displaySiteCopyright = false
 
     # 自定义页脚（支持 Markdown）
-    customFooter = ""
+    customFooter = "[萌ICP备20230416号](https://icp.gov.moe/?keyword=20230416)"
 
     displayBusuanziSiteUVAndPV = false
     busuanziSiteUVText = "本站访客数"
