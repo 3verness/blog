@@ -23,7 +23,7 @@ mermaid: false
 * 支持Zstandard压缩算法（~~同样还没有一个浏览器的稳定版支持~~
 * 更复杂的Caddyfile配置
 
-![](https://awesome-image.oss-cn-beijing.aliyuncs.com/20200710095257.png)
+![](https://img.ioyoi.me/20200710095257.webp)
 
 虽然早就想更新到新版本，但折腾了两次V2Ray都不work，遂一直没有升级。今天发现V2Ray的[新白话文指南](https://guide.v2fly.org/advanced/wss_and_web.html)中给出了Caddy v2的配置方法，故趁热打铁把服务升级至新版本。
 

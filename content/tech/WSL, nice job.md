@@ -21,7 +21,7 @@ Windows下的Linux子系统推出已经三年多了，但直至上周我才正�
 
   相较git-bash提供的有限Linux命令，WSL提供了一套完整的Linux操作体验，其基本上可以完成所有Linux环境下的命令行操作，达到无限近似于于双系统的体验。将其shell更换为我更习惯的zsh并用[AutoHotKey](https://www.autohotkey.com/)设置Ctrl+Alt+T的热键后，感觉完全是一个使用Windows桌面的Linux系统。
 
-  ![](https://awesome-image.oss-cn-beijing.aliyuncs.com/20200506205404.png)
+  ![](https://img.ioyoi.me/20200506205404.webp)
 
 * 轻量
 
@@ -37,7 +37,7 @@ Windows下的Linux子系统推出已经三年多了，但直至上周我才正�
 
   一直认为Windows的一大缺陷是缺少一个类似于brew、pacman一样优秀的包管理器。[^1]而WSL很大程度上可以补足这一点，曾经一次次手动下载更新Hugo和Annie的我终于得到了解放，也希望不久后Microsoft Store能真正的站起来吧。
 
-  ![](https://awesome-image.oss-cn-beijing.aliyuncs.com/20200506210724.png)
+  ![](https://img.ioyoi.me/20200506210724.webp)
 
 对于经常在Windows下运行命令行而又不熟悉cmd命令的人，WSL是一个近乎完美的工具。
 

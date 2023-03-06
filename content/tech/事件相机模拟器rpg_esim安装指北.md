@@ -203,7 +203,7 @@ sudo apt install python-rosinstall python-rosinstall-generator python-wstool bui
 
   运行示例
 
-  ![](https://awesome-image.oss-cn-beijing.aliyuncs.com/20200414124624.png)
+  ![](https://img.ioyoi.me/20200414124624.webp)
 
 * 可视化
 
@@ -226,7 +226,7 @@ sudo apt install python-rosinstall python-rosinstall-generator python-wstool bui
 
   效果如下
 
-  ![](https://awesome-image.oss-cn-beijing.aliyuncs.com/20200414124524.png)
+  ![](https://img.ioyoi.me/20200414124524.webp)
 
 ## 数据解包
 

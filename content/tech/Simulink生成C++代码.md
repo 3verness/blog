@@ -22,21 +22,21 @@ Simulink提供了很强大的控制器仿真功能，但无奈自己学艺不精
 
 首先需要在Matlab中安装Simulate Coder。
 
-![](https://awesome-image.oss-cn-beijing.aliyuncs.com/20200507114808.png)
+![](https://img.ioyoi.me/20200507114808.webp)
 
 安装完成后可以在Simulink-APPS中找到Simulink Coder入口，打开后，在Settings-Model Settings中对生成项目进行一定的配置。
 
 首先为了更容易的得到时间，在solver中选用了定步长的龙格-库塔法进行仿真，并设置合适的步长。
 
-![](https://awesome-image.oss-cn-beijing.aliyuncs.com/20200507225409.png)
+![](https://img.ioyoi.me/20200507225409.webp)
 
 为了方便，这里选择直接生成完整的通用C++解决方案，同时勾选仅生成代码而不进行编译，这样可以省去配置编译器带来的麻烦。
 
-![](https://awesome-image.oss-cn-beijing.aliyuncs.com/20200507165913.png)
+![](https://img.ioyoi.me/20200507165913.webp)
 
 如果在编译中遇到了`rt_StartDataLoggingWithStartTime`等其他[宏缺失的问题](https://www.mathworks.com/matlabcentral/answers/313434-where-is-defined-the-function-rt_startdataloggingwithstarttime)，需要在Code Generation-Interface-Advanced parameters中禁用MAT格式日志。
 
-![](https://awesome-image.oss-cn-beijing.aliyuncs.com/20200507170729.png)
+![](https://img.ioyoi.me/20200507170729.webp)
 
 设置完成后点击Generate Code即可生成项目，生成成功后会弹出报告，项目路径为Matlab当前的工作路径。
 
@@ -46,7 +46,7 @@ Simulink提供了很强大的控制器仿真功能，但无奈自己学艺不精
 
 这里使用一简单伺服电机模型作为示例：
 
-![](https://awesome-image.oss-cn-beijing.aliyuncs.com/20200507225133.png)
+![](https://img.ioyoi.me/20200507225133.webp)
 
 可以看到该模型有两输入信号`In1, In2`与一输出信号`Out1`。
 

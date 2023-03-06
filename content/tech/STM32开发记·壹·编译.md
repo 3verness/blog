@@ -46,15 +46,15 @@ choco install gcc-arm-embedded make openocd
 
 首先打开STM32CubeMX软件，`File-New Project`新建工程，搜索并选择所使用的芯片组，点击`Start Project`开始配置。
 
-![](https://awesome-image.oss-cn-beijing.aliyuncs.com/202207251107812.webp)
+![](https://img.ioyoi.me/202207251107812.webp)
 
 在弹出的功能界面中分配引脚并配置时钟，随后在`Project Manager`中设置工程路径，在`Toolchain/IDE`一栏中选择`MakeFile`。如要使用Keil 5作为开发工具，则需要选择`MDK-ARM`。开发过程中，我们可以随时更改该选项重新生成编译相关代码，用户输入的功能代码不会受到影响。
 
-![image-20220725111305431](https://awesome-image.oss-cn-beijing.aliyuncs.com/202207251113767.webp)
+![image-20220725111305431](https://img.ioyoi.me/202207251113767.webp)
 
 `Code Generator`选项卡中可设置生成规则，通常选择仅拷贝所需库减小工程体积，并生成独立的初始化代码文件。`Advanced Setting`选项卡中可选择HAL或LL驱动库。
 
-![image-20220725111944808](https://awesome-image.oss-cn-beijing.aliyuncs.com/202207251119823.webp)
+![image-20220725111944808](https://img.ioyoi.me/202207251119823.webp)
 
 设置完成后，点击右上角`GENERTE CODE`生成工程文件。
 
@@ -85,7 +85,7 @@ PROJECT
 
 不过使用VS Code打开源文件时，会发现大量include报错，这是由于C/C++插件并未索引到头文件。
 
-![image-20220725113302729](https://awesome-image.oss-cn-beijing.aliyuncs.com/202207251133957.webp)
+![image-20220725113302729](https://img.ioyoi.me/202207251133957.webp)
 
 为解决该问题，需要参考`Makefile`文件对C/C++插件进行配置。在`Makefile`中，我们重点关注`C_DEFS`与`C_INCLUDES`两项参数。
 
@@ -106,7 +106,7 @@ C_INCLUDES =  \
 
 在VS Code中找到`C/C++ Edit Configuration (JSON)`命令，生成`c_cpp_properties.json`文件，键入以下配置：
 
-![image-20220725113735382](https://awesome-image.oss-cn-beijing.aliyuncs.com/202207251137870.webp)
+![image-20220725113735382](https://img.ioyoi.me/202207251137870.webp)
 
 ```json
 {

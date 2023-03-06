@@ -85,7 +85,7 @@ op = d.add(e.OPAMP, anchor='in2')
 
 推荐采用的绘图顺序是`push()/pop()`的连续绘图方式，`d.push()`是储存当前位置，`d.pop()`则可以回到上一储存位置，下面用一个实例来说明该绘图过程。
 
-![](https://awesome-image.oss-cn-beijing.aliyuncs.com/20200422120755.svg)
+![](https://img.ioyoi.me/20200422120755.webp)
 
 ```python
 d.add(e.DOT_OPEN, label='$a$')
@@ -137,7 +137,7 @@ d.add(e.LINE, theta=45, l=d.unit / 2)
 
 ## 示例
 
-![](https://awesome-image.oss-cn-beijing.aliyuncs.com/20200422120533.svg)
+![](https://img.ioyoi.me/20200422120533.webp)
 
 ```python
 op = d.add(e.OPAMP)
@@ -170,7 +170,7 @@ d.add(e.CAP, d='down', label='$C_4$')
 d.add(e.GND)
 ```
 
-![](https://awesome-image.oss-cn-beijing.aliyuncs.com/20200422121242.svg)
+![](https://img.ioyoi.me/20200422121242.webp)
 
 ```python
 d.add(e.DOT_OPEN, label='$U_i$')
@@ -203,7 +203,7 @@ d.add(e.CAP, d='down', label='$2C$')
 d.add(e.LINE, d='right', l=d.unit / 8)
 ```
 
-![](https://awesome-image.oss-cn-beijing.aliyuncs.com/20200422121404.svg)
+![](https://img.ioyoi.me/20200422121404.webp)
 
 ```python
 d.add(e.DOT_OPEN, label='$U_i$')
@@ -257,7 +257,7 @@ d.add(e.LINE, d='down', toy=op2.out)
 d.add(e.DOT)
 ```
 
-![](https://awesome-image.oss-cn-beijing.aliyuncs.com/20200422121500.svg)
+![](https://img.ioyoi.me/20200422121500.webp)
 
 ```python
 d.add(e.DOT_OPEN, label='$U_i$')

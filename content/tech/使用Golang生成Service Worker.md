@@ -22,7 +22,7 @@ mermaid: false
 
 当你打开我的博客时，你可能会发现，你可以将博客安装为PWA应用已提供离线访问。
 
-![](https://awesome-image.oss-cn-beijing.aliyuncs.com/20200710132023.png)
+![](https://img.ioyoi.me/20200710132023.webp)
 
 这项功能是通过Service Worker中的Workbox实现的，其会在网站根目录下生成`sw.js`的文件，控制静态文件的缓存并依照缓存策略提供请求路由，当更新网站后，需要更新`sw.js`文件以告知浏览器重新缓存新版本。
 
@@ -86,4 +86,4 @@ workbox.precaching.precacheAndRoute([{{- range $index, $element := . -}}
 
 速度比`workbox-cli`要快得多，从提交到生成完毕只需要2秒左右，更主要的是不需要解决依赖问题，单可执行文件即可运行。
 
-![](https://awesome-image.oss-cn-beijing.aliyuncs.com/20200710172017.png)
+![](https://img.ioyoi.me/20200710172017.webp)

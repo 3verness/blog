@@ -39,7 +39,7 @@ python remote_command_execution_vulnerability.py
 
 按照提示输入路由器后台密码即可获得ssh命令，密码默认为`root`。
 
-![](https://awesome-image.oss-cn-beijing.aliyuncs.com/202203021049333.png)
+![](https://img.ioyoi.me/202203021049333.webp)
 
 ## 刷入固件
 
@@ -53,7 +53,7 @@ mtd -e OS1 -r write openwrt.bin OS1
 
 命令行提示Rebooting，路由器电源指示灯恢复蓝色常亮后，刷机成功，可以通过ssh或直接用浏览器打开[luci界面](http://192.168.1.1/cgi-bin/luci/)配置openwrt，密码处输入任意内容，均可进入后台。
 
-![](https://awesome-image.oss-cn-beijing.aliyuncs.com/202203021224639.png)
+![](https://img.ioyoi.me/202203021224639.webp)
 
 ## 修复WiFi
 
@@ -61,11 +61,11 @@ mtd -e OS1 -r write openwrt.bin OS1
 
 该问题可简单地通过重新刷入SYSUPGRADE包解决。luci界面下，在System-Backup/Flash Firmware-Flash new firmware image选项中刷入下载好的同版本SYSUPGRADE包，注意取消勾选保留设置选项，等待刷机结束后luci界面自动刷新。
 
-![](https://awesome-image.oss-cn-beijing.aliyuncs.com/202203021224135.png)
+![](https://img.ioyoi.me/202203021224135.webp)
 
 重新登陆管理界面，Network-Wireless选项卡已恢复，可以点选Enable按钮打开无线功能。
 
-![](https://awesome-image.oss-cn-beijing.aliyuncs.com/202203021225121.png)
+![](https://img.ioyoi.me/202203021225121.webp)
 
 ## 更换软件源
 
