@@ -103,8 +103,10 @@ C--anti-Park-->B
 
 * 电气模型：同步电机两轴电压由电阻压降与反电动势组成，而反电动势依照来源可划分为轴上磁通变化感生电动势和磁场夹角变化感生电动势，具体可写作：
   $$
-  u_d=Ri_d+\frac{d}{dt}\psi_d-\omega_e\psi_q\\\\
-  u_q=Ri_q+\frac{d}{dt}\psi_q+\omega_e\psi_d
+  \begin{aligned}
+  u_d&=Ri_d+\frac{d}{dt}\psi_d-\omega_e\psi_q\\\\
+  u_q&=Ri_q+\frac{d}{dt}\psi_q+\omega_e\psi_d
+  \end{aligned}
   $$
 
 * 磁链模型：如原理部分所示，磁场包括永磁体磁场和线圈感生磁场，其中永磁体磁场仅加载在平行于永磁体的d轴：
