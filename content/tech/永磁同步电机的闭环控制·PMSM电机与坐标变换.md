@@ -23,7 +23,7 @@ mermaid: true
 
 ## 永磁同步电机中的坐标系
 
-永磁同步电机控制中通常会使用三种坐标系，分别为ABC坐标系、αβ坐标系和dq坐标系。[^1]
+永磁同步电机控制中通常会使用三种坐标系，分别为ABC坐标系、αβ坐标系和dq坐标系。{{<cite 1 "https://www.researchgate.net/publication/327634712_Full-Speed_Range_Encoderless_Control_for_Salient-Pole_PMSM_with_a_Novel_Full-Order_SMO">}}
 
 ![Illustration-of-the-salient-pole-permanent-magnet-synchronous-motor-PMSM-model](https://img.ioyoi.me/20230405230357.webp "PMSM电机中的三个坐标系")
 
@@ -80,7 +80,7 @@ C--anti-Park-->B
 
   **电气角与机械角**
 
-  注意这里的电气角$\theta_e$与机械角$\theta_m$不同，其之间的转换关系与电机级对数$p$有关：
+  注意这里的电气角$\theta_e$与机械角$\theta_m$不同，其之间的转换关系与电机级对数$p$有关：{{<cite 2 "https://www.sciencedirect.com/topics/engineering/magnetomotive-force">}}
   $$
   \theta_e=p\theta_m
   $$
@@ -148,8 +148,9 @@ C--anti-Park-->B
   $$
   T_e-b_m\omega_m-T_m=J\frac{d\omega_m}{dt}
   $$
+  
+* 
 
 结合以上三个模型，即可完整描述出永磁同步电机的工作原理。
 
-[^1]: https://www.researchgate.net/publication/327634712_Full-Speed_Range_Encoderless_Control_for_Salient-Pole_PMSM_with_a_Novel_Full-Order_SMO
-[^2]: https://www.sciencedirect.com/topics/engineering/magnetomotive-force
+{{<ref>}}
