@@ -159,4 +159,4 @@ Hugo中的Shortcodes主要有两种形式，一种为One Tag式，如：
 
 
 
-{{< friend name="3verness" url="https://oi-io.me" logo="https://oi-io.me/favicon.ico" motto="To discover. To change." >}}
+{{< friend name="3verness" url="https://ioyoi.me" logo="https://ioyoi.me/favicon.ico" motto="To discover. To change." >}}

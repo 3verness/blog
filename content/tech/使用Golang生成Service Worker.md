@@ -80,7 +80,7 @@ workbox.precaching.precacheAndRoute([{{- range $index, $element := . -}}
 {{- end -}}]);
 ```
 
-随后编写Golang脚本，遍历根目录下的所有文件，并计算其MD5值，最后应用模板生成文件。完整代码见[Gitea](https://git.everness.me/Everness/workbox)。
+随后编写Golang脚本，遍历根目录下的所有文件，并计算其MD5值，最后应用模板生成文件。完整代码见[Github](https://github.com/3verness/workbox)。
 
 ## 效果
 
