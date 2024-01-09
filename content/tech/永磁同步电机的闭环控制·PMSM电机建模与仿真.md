@@ -7,7 +7,7 @@ tags:
     - "motor"
     - "simulink"
 date: 2023-04-07T01:04:47+08:00
-draft: false
+draft: true
 author: EvernessW
 
 
@@ -74,5 +74,4 @@ $$
 $$
 U_q+\frac{p\psi_f}{Js+b_m}T_m=(R+L_qs-\frac{3}{2}\frac{p^2\psi_f^2}{(b_m+Js)})I_q
 $$
-
 
