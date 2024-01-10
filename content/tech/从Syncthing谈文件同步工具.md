@@ -17,8 +17,6 @@ katex: false
 mermaid: false
 ---
 
-{{<justwrite 4>}}
-
 重装系统安装[SyncToy](https://www.microsoft.com/en-us/download/search.aspx?q=synctoy)时，发现巨硬已经把它从Download Center中移除，为了同步工位台式机和笔记本上的资料，我开始寻找替代品，最终发现了[Syncthing](https://syncthing.net/)这一神器。
 
 ## 优点

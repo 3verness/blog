@@ -96,7 +96,7 @@ Anyway，工具只是工具，当我们了解其原理后，可以很快的从�
 
 打开VS Code左侧Embedded-IDE标签页，选择New Project->Empty Project->Cortex-M Project，输入项目名称、保存位置后右下角弹出跳转到项目选项，点击Continue进入项目。
 
-首先我们需要从下载的标准库拷贝一些必需的头文件，按照江协教程，我们可以在项目中新建一个`Start`文件夹存放这些文件，以下文件均位于`STM32F10x_StdPeriph_Lib_V3.6.0\Libraries\CMSIS\CM3`中：
+首先我们需要从下载的标准库拷贝一些必需的头文件，按照江协教程，我们可以在项目中新建一个`Start`文件夹存放这些文件，以下文件均位于`Libraries\CMSIS\CM3`中：
 
 * `CoreSupport\core_cm3.h/c`
 
@@ -335,9 +335,7 @@ Warn : Adding extra erase range, 0x08000338 .. 0x080003ff
 ** Verified OK **
 ```
 
-此时便可以通过更换`main`函数，反复刷写控制灯光亮灭了。
-
-至此，一个简单的亮灯程序就完成了，虽然代码并不长，但可读性很差，必须查阅参考手册才能知道每个语句的具体含义，这也是基于寄存器从底层开发的劣势所在，在下一篇文章中，我们将使用库函数实现相同的功能，并将这一颗LED玩出更多花样来。
+此时便可以通过更换`main`函数，反复刷写控制灯光亮灭了。一个简单的亮灯程序就这样完成了，虽然代码并不长，但可读性很差，相信对于初学者来说，如果没有注释，必须查阅参考手册才能知道每个语句的具体含义，这也是基于寄存器从底层开发的劣势所在，在后文中，我们将学习如何使用库函数实现相同的功能。
 
 ## 浅尝调试
 
@@ -372,4 +370,98 @@ Warn : Adding extra erase range, 0x08000338 .. 0x080003ff
 
 值得注意的是，Debug只会利用编译中生成的`elf`文件进行调试，并不会自动重新编译文件，因此每次修改源文件后，都需要手动Rebuild才可以进行调试。
 
-恭喜你，你已经踏出了学习STM32的第一步，相较Keil，开源工具链的配置过程确实要繁琐的多，但克服了这些阻碍后，你便可以在一个现代化的UI界面里愉快的编写嵌入式代码了~
+## 认识标准库
+
+上两个章节中，我们使用寄存器开发了一个简单的亮灯程序，现在我们将使用标准库重新实现该功能。
+
+若想使用标准库，首先我们需要将标准库中`Libraries\STM32F10x_StdPeriph_Driver`中`inc`文件夹下的库头文件与`src`下的源文件添加至项目中，我们新建一个`Library`文件夹存放这些标准库文件，同样别忘了将`Library`文件夹添加至Embedded IDE的Project Resources和Include Directories。
+
+此外，我们还需要额外的三个文件对这些头文件进行导入以及中断定义，均可以在标准库下的`Project\STM32F10x_StdPeriph_Template`内找到：
+
+* `stm32f10x_conf.h`
+
+  用于包含标准库头文件，并提供标准库函数参数检查函数定义；
+
+* `stm32f10x_it.h/c`
+
+  定义标准库中的中断函数。
+
+由于上述文件可能需要更改，可以将它们放置在`User`目录下，此时项目文件树结构可参照[该模板工程]()。
+
+最后留意到`stm32f10x.h`结尾处语句：
+
+```c
+#ifdef USE_STDPERIPH_DRIVER
+  #include "stm32f10x_conf.h"
+#endif
+```
+
+因此为导入标准库，需要在预处理器中定义`USE_STDPERIPH_DRIVER`，即在Preprocessor Definations中添加该项。
+
+在`main.c`中输入`GPIO`会发现出现一系列自动补全的库函数，说明标准库已经成功导入。
+
+让我们用标准库重写该功能，寄存器配置语句注释在对应的库函数语句下方，这里我建议去看看江协科技[2-2课时](https://www.bilibili.com/video/BV1th411z7sn?t=1411.4&p=4)该部分的库函数编写流程，包含了查阅注释、寻找可选参数的编程过程，值得一提的是，由于VS Code可以读取格式化注释，将鼠标移至函数名称处即可显示可选参数，比Keil要方便不少：
+
+```c
+#include "stm32f10x.h"
+
+int main(void)
+{
+    // 打开外设时钟
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);
+    // RCC->APB2ENR = 0x00000010;
+
+    // 设置端口推挽输出
+    GPIO_InitTypeDef GPIO_InitStructure;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13;
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+    GPIO_Init(GPIOC, &GPIO_InitStructure);
+    // GPIOC->CRH = 0x00300000;
+
+    // 复位
+    GPIO_ResetBits(GPIOC, GPIO_Pin_13);
+    // GPIOC->ODR = 0x00000000;
+
+    // 置位
+    GPIO_SetBits(GPIOC, GPIO_Pin_13);
+    // GPIOC->ODR = 0x00002000; //关灯
+
+    while(1);
+}
+```
+
+可以看到，库函数的代码比寄存器配置要繁琐的多，那么使用库函数的优势何在呢？让我们回顾一下寄存器开发的流程，当我们想实现一个设置时，首先要寻找控制该设置的寄存器，在参考手册中查找该寄存器对应的名称及各位含义，按照含义配置寄存器的零一值；而库函数开发则变为，查找设置该项的函数，查看该函数各参数的可选项，选择合适的可选项填入，其中大部分查找功能可以通过编辑器完成，同时函数名也具有更高的可读性，这就极大的提升了开发效率，以下两张GIF可以直观地反应两种方式开发的效率对比。
+
+![1](https://img.ioyoi.me/20240110121901.webp "寄存器开发")
+
+![1](https://img.ioyoi.me/20240110121902.webp "库函数开发")
+
+此外，我们观察库函数的具体实现：
+
+```c
+void RCC_APB2PeriphClockCmd(uint32_t RCC_APB2Periph, FunctionalState NewState)
+{
+  /* Check the parameters */
+  assert_param(IS_RCC_APB2_PERIPH(RCC_APB2Periph));
+  assert_param(IS_FUNCTIONAL_STATE(NewState));
+  if (NewState != DISABLE)
+  {
+    RCC->APB2ENR |= RCC_APB2Periph;
+  }
+  else
+  {
+    RCC->APB2ENR &= ~RCC_APB2Periph;
+  }
+}
+```
+
+发现库函数会逐一对参数进行参数检查，并通过`|=`与`&=`对寄存器单个位进行置位和复位，最大程度的避免了我们的粗心犯错，同时也不会对其他无关项造成影响，相较使用寄存器更为安全省心。
+
+## 打包模板
+
+由于我们以后会经常创建新工程，每次都重新复制文件过于麻烦，这里推荐将该工程打包成模板(`.ept`)，便于日后直接创建基于库函数的Embedded IDE工程。在Embedded IDE页右键该工程选择Export Eide Project Template，该操作会在项目根目录下生成一个`.ept`文件，这便是我们的模板文件，此后新建工程时，只需要选择New Project->Local Template，选择该模板文件即可生成一个除名称位置外与当前工程完全一样的新工程，无需再做任何配置！
+
+![image-20240110123152356](https://img.ioyoi.me/20240110123154.webp)
+
+恭喜你，你已经踏出了学习STM32的第一步，相较Keil，开源工具链的配置过程确实要繁琐的多，但你已经成功克服了大多数阻碍，现在，你便可以在一个现代化的UI界面里愉快的编写嵌入式代码了~在下一篇文章中，我们将从GPIO开始，一步步认识STM32的外设操作，一起向点灯大师进发吧！
