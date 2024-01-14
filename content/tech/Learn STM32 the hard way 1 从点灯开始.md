@@ -1,5 +1,5 @@
 ---
-title: "Learn STM32 the Hrad Way·1 从点灯开始"
+title: "Learn STM32 the Hard Way·1 从点灯开始"
 slug: "learn-stm32-1"
 subtitle: "基于GNU GCC、OpenOCD开源工具链的STM32入门"
 defcription: ""
