@@ -346,8 +346,8 @@ while(1)
 // B
 while(1)
 {
-    GPIO->BSRR = 0x00000003;
-    GPIO->BRR = 0x00000003;
+    GPIOA->BSRR = 0x00000003;
+    GPIOA->BRR = 0x00000003;
 }
 ```
 
@@ -361,12 +361,13 @@ while(1)
   RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
   ```
 
-* 设置PA0为输入，并选择浮动、上拉或下拉，此时刷新速率无需设置；
+* 设置PA0为输入，并选择浮动、上拉或下拉；
 
   ```c
   GPIO_InitTypeDef GPIO_InitStructure;
   GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
   GPIO_Init(GPIOA, &GPIO_InitStructure);
   ```
 
@@ -434,6 +435,8 @@ void sleep_us(uint32_t us)
 {
     // 设定初始值为延时的72倍（如更改了系统时钟，倍数也需要修改）
     SysTick->LOAD = 72 * us;
+    // 计数器手动归零
+    SysTick->VAL = 0x00000000;
     // 设定时钟源为内核时钟，并开始计数
     SysTick->CTRL = 0x00000005;
     // 等待计数器归零
@@ -451,6 +454,8 @@ void sleep_us(uint32_t us)
 {
     // 设定初始值为延时的72倍（如更改了系统时钟，倍数也需要修改）
     SysTick->LOAD = 72 * us;
+    // 计数器手动归零
+    SysTick->VAL = 0x00000000;
     // 设定时钟源为内核时钟，并开始计数
     SysTick->CTRL = 0x00000005;
     // 等待计数器归零
@@ -470,7 +475,7 @@ void sleep_ms(uint32_t ms)
 void sleep_s(uint32_t s)
 {
     while (s--) {
-        sleep_us(1000);
+        sleep_ms(1000);
     }
 }
 ```
@@ -481,9 +486,12 @@ void sleep_s(uint32_t s)
 
 ![image-20240115014749669](https://img.ioyoi.me/20240115014751.webp)
 
-为使用PA15、PB3、PB4，可以先将`SWJ_CFG`置为010，即仅保留PA13、PA14作为调试口，随后便可对PA15、PB3、PB4进行正常的GPIO配置了：
+为使用PA15、PB3、PB4，可以先将AFIO外设中的`SWJ_CFG`置为010，即仅保留PA13、PA14作为调试口，随后便可对PA15、PB3、PB4进行正常的GPIO配置了：
 
 ```c
+// AFIO控制首先需要开启AFIO外设时钟
+RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);
+// 设置模式为JTAG-DG Disabled and SW-DP Enabled
 GPIO_PinRemapConfig(GPIO_Remap_SWJ_JTAGDisable, ENABLE);
 ```
 
@@ -528,16 +536,16 @@ if (GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0) == Bit_RESET) {
         GPIO_ResetBits(GPIOA, GPIO_Pin_1);
     }
     // 等待按下按键产生的抖动消失
-    sleep_us(20);
+    sleep_ms(10);
     // 等待按键松开
     while (GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0) == Bit_RESET)
         ;
     // 等待松开按键产生的抖动消失
-    sleep_us(200);
+    sleep_ms(10);
 }
 ```
 
-在这种实现方式下，通过`sleep`延时函数阻塞函数的运行，需要等待按键松开后才可以处理其他的事务，那么，是否会有更好的方式呢？
+经过实验测试，留有10ms时间窗的情况下，基本不会发生因抖动产生的误操作。不过在这种实现方式下，`sleep`延时函数会阻塞函数的运行，需要等待按键松开后才可以处理其他的事务，那么，是否会有更好的方式呢？当然有！不过需要借助中断实现，让我们熟悉中断以后再来学习吧。
 
 ## 小结
 
