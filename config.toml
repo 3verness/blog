@@ -89,6 +89,10 @@ uglyURLs = false
         endLevel = 6
         ordered = true
 
+# 压缩 HTML
+[minify.tdewolff.html]
+    keepWhitespace = false
+
 # 作者信息
 [author]
     # 名字
@@ -400,6 +404,7 @@ uglyURLs = false
     # 设置一个非负数来限制每一分类下展示的文章数
     limitPostsLimit = -1
 
+
     ######################################
     # 标签页面
 
@@ -507,6 +512,9 @@ uglyURLs = false
     #      话。类似，如果你开启深色模式并将默认
     #      模式修改为它，即使你隐藏开关，你的读
     #      者依然可能以浅色模式模式阅读你的博客。
+    #      除非，你开启下方这个选项。
+
+    overrideSystemPreferences = false
 
 
     ######################################
@@ -663,13 +671,13 @@ uglyURLs = false
 
     # 说明：仅在生产环境（production）下渲染
 
-    enableGoogleAnalytics = false
+    enableGoogleAnalytics = true
 
     # 跟踪代码的类型
     trackingCodeType = "gtag"
     # 说明：gtag 或 analytics
 
-    trackingID = "UA-118984058-2"
+    trackingID = "G-6TEZEHPKQ7"
 
 
     ######################################
@@ -907,6 +915,7 @@ uglyURLs = false
     # 滚动条
     customizeScrollbar = true
 
+
     ######################################
     # 字体排版
 
@@ -1114,16 +1123,13 @@ uglyURLs = false
 
     displayShareOnText = false
 
-    shareOnTwitter = true
-    shareOnFacebook = false
-    shareOnLinkedIn = false
-    shareOnTelegram = true
-    shareOnWeibo = true
-    shareOnDouban = false
-    shareOnQQ = false
-    shareOnQzone = false
+    postShareItems = ["twitter", "telegram", "weibo", "qrcode"]
 
-    shareViaQRCode = true
+    # 从网络获取 Fediverse 实例列表用于输入建议
+    fetchFediverseInstances = true
+    # 说明：当开启 mastodon 或 fediverse 分享项
+    #      时建议开启。开启后构建时，数据需要从网
+    #      络下载，会带来额外的构建时间。
 
 
     ######################################
@@ -1225,6 +1231,9 @@ uglyURLs = false
     iconColor = "#F8C3CD"
     # 是否开启图标的跳动效果
     iconAnimation = true
+    
+    # 是否显示站点的作者名称
+    displaySiteAuthorName = true
 
     # 是否显示 Hugo 和 MemE 的链接
     displayPoweredBy = true
