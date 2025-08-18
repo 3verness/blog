@@ -2,7 +2,7 @@
 title: "{{ replace .Name "-" " " | title }}"
 slug: ""
 subtitle: ""
-defcription: ""
+description: ""
 tags:
     - ""
 date: {{ .Date }}
