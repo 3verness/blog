@@ -2,7 +2,7 @@
 title: "“芯”开始·1：聊聊FPGA开发板和开发环境"
 slug: "fpga-learn-1"
 subtitle: "基于嘉立创逻辑派和全开源工具链的FPGA开发环境"
-description: "踏上FPGA之旅的第一步，选择一块合适的开发板，并搭建一套丝滑的开发环境"
+description: "踏上FPGA之旅的第一步，一块合适的开发板，一套丝滑的开发环境"
 tags:
     - "FPGA"
     - "oss-cad-suite"

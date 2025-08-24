@@ -7,7 +7,7 @@ tags:
     - ""
 date: {{ .Date }}
 draft: true
-author: {{ .Site.Author.name }}
+author: {{ .Site.Params.Author.name }}
 
 
 toc: false
