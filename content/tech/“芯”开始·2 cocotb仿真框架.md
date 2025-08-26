@@ -208,7 +208,7 @@ endif
   end
 ```
 
-![image-20250824161214304](/home/ioyoi/.config/Typora/typora-user-images/image-20250824161214304.png)
+![image-20250824161214304](https://img.ioyoi.me/20250826234248.webp)
 
 从波形文件可以看到仿真共经历3次复位，这是由于不做特殊配置的情况下，cocotb的测例是顺序依次进行的。
 

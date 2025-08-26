@@ -34,7 +34,7 @@ mermaid: false
 
 去年底，我发现了嘉立创的[“逻辑派”](https://wiki.lckfb.com/zh-hans/fpga-ljpi/)。它搭载了一颗兆易GD32 MCU和一颗高云GW2A FPGA，是纯正的国产方案。板上附赠一颗2Gb DDR3和一些实用外设，搞活动到手仅138元。这个价格，还要什么自行车？买来当核心板都血赚。
 
-![image-20250818221010124](/home/ioyoi/.config/Typora/typora-user-images/image-20250818221010124.png)
+![image-20250818221010124](https://img.ioyoi.me/20250826234024.webp)
 
 我把它和市面上其他几款高性价比FPGA拉出来对比了一下：
 
@@ -53,9 +53,9 @@ mermaid: false
 ## MCU (PS端) 开发环境
 
 我选择用 `CMake + Arm GNU Toolchain + CLion` 这套环境来开发MCU。为什么抛弃祖传的Keil？原因有三：
-1.  **版权：**Keil是付费软件，破解软件既不道德也不安全。
-2.  **体验：**CLion作为专业的C/C++ IDE，代码补全、重构、调试体验和AI功能，都比Keil领先一个时代。
-3.  **跨平台：** 这套工具链在Linux、Windows甚至Mac OS上体验都完全一致。
+1. **版权**：Keil是付费软件，破解软件既不道德也不安全。
+2. **体验**：CLion作为专业的C/C++ IDE，代码补全、重构、调试体验和AI功能，都比Keil领先一个时代。
+3. **跨平台**： 这套工具链在Linux、Windows甚至Mac OS上体验都完全一致。
 
 如果你对这套环境感兴趣，可以参考[我的项目仓库](https://github.com/I0Y0I/Logicpi_PS_starter)。重点关注`CMakeLists.txt`（项目构建的说明书）和`gd32f303cbt6.lds`（链接器脚本，指示代码和数据在RAM和FLASH中的位置）。
 
@@ -65,7 +65,7 @@ mermaid: false
 
 传统上，FPGA开发流程被各大厂商严格管控着：用Intel的FPGA就得装Quartus，用AMD的就得装Vivado。高云也提供了自家的Gowin EDA。但说实话，它在Linux高分屏下的体验简直是灾难，UI缩放一塌糊涂，用起来相当糟心。
 
-![image-20250818235421198](/home/ioyoi/.config/Typora/typora-user-images/image-20250818235421198.png)
+![image-20250818235421198](https://img.ioyoi.me/20250826234033.webp)
 
 幸运的是，我在社区里发现了一套**完全开源**的FPGA开发工作流！这套流程由一系列命令行工具组成，覆盖了从代码编写到烧录的全过程：
 
